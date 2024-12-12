@@ -488,7 +488,10 @@ const AppearanceSettingsPanel: FC = () => {
                 </Tooltip>
             </Group>
             <SettingsCard mb="lg">
-                <AppearanceColorSettings />
+                <Stack spacing="lg">
+                    <AppearanceColorSettings />
+                    <ProjectLabelSettings />
+                </Stack>
             </SettingsCard>
         </Stack>
     );
