@@ -351,3 +351,14 @@ projectRouter.get(
         }
     },
 );
+router.patch(
+    '/:projectUuid/catalog-config',
+    async (req, res) => {
+        const { defaultLabelFormat } = req.body;
+        const updated = await projectModel.updateCatalogConfig(
+            req.params.projectUuid,
+            { defaultLabelFormat }
+        );
+        res.json(updated);
+    }
+);

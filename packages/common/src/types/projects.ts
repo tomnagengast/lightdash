@@ -365,3 +365,11 @@ export type PreviewContentMapping = {
 export type UpdateSchedulerSettings = {
     schedulerTimezone: string;
 };
+export enum CaseFormat {
+  SENTENCE_CASE = 'sentence_case',
+  TITLE_CASE = 'title_case'
+}
+
+export interface ProjectCatalogConfig {
+  defaultLabelFormat: CaseFormat;
+}

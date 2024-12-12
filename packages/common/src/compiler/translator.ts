@@ -36,6 +36,12 @@ import {
     type WeekDay,
 } from '../utils/timeFrames';
 import { ExploreCompiler } from './exploreCompiler';
+import { startCase } from 'lodash';
+
+enum CaseFormat {
+    SENTENCE_CASE = 'sentence_case',
+    TITLE_CASE = 'title_case',
+}
 
 const convertTimezone = (
     timestampSql: string,
@@ -793,3 +799,10 @@ export const getSchemaStructureFromDbtModels = (
         schema,
         table: alias || name,
     }));
+
+const friendlyName = (name: string, format: CaseFormat = CaseFormat.SENTENCE_CASE): string => {
+    const withSpaces = name.toLowerCase().replace(/_/g, ' ');
+    return format === CaseFormat.TITLE_CASE ? 
+        startCase(withSpaces) : 
+        withSpaces.charAt(0).toUpperCase() + withSpaces.slice(1);
+}
